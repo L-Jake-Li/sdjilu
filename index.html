@@ -158,6 +158,25 @@
             margin: 15px auto;
         }
         
+        /* SM圈介绍板块特定样式 */
+        #about .text-content {
+            background: rgba(255, 255, 255, 0.7); /* 半透明白色背景 */
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(5px); /* 背景模糊效果 */
+        }
+        
+        #about .text-content p {
+            margin-bottom: 20px;
+            line-height: 1.8;
+            font-size: 1.1rem;
+            text-align: justify;
+        }
+        
+        /* 其他区块的文字内容样式 */
         .text-content {
             margin-bottom: 25px;
         }
@@ -340,6 +359,12 @@
                 height: 50px;
             }
             
+            /* SM圈介绍板块在移动端的样式调整 */
+            #about .text-content {
+                padding: 20px;
+                margin: 0 10px 30px 10px;
+            }
+            
             .features, .specs {
                 grid-template-columns: 1fr;
             }
@@ -369,6 +394,11 @@
             .nav-buttons {
                 row-gap: 20px;
             }
+            
+            /* SM圈介绍板块在超小屏幕的样式调整 */
+            #about .text-content {
+                padding: 15px;
+            }
         }
     </style>
 </head>
@@ -396,16 +426,16 @@
                 <i class="fas fa-info-circle"></i> SM圈介绍
             </a>
             <a href="#features" class="nav-btn">
-                <i class="fas fa-star"></i> 了解属性
+                <i class="fas fa-star"></i> 了解自己的属性
             </a>
             <a href="#specs" class="nav-btn">
                 <i class="fas fa-cogs"></i> 圈内文化
             </a>
             <a href="#gallery" class="nav-btn">
-                <i class="fas fa-images"></i> 入圈会员
+                <i class="fas fa-images"></i> 真实入圈会员
             </a>
             <a href="#contact" class="nav-btn">
-                <i class="fas fa-headset"></i> 入圈通道
+                <i class="fas fa-headset"></i> 入圈联系我们
             </a>
         </div>
     </section>
@@ -415,14 +445,11 @@
         <div class="container">
             <h2 class="section-title">SM圈介绍</h2>
             <div class="text-content">
-                <p>此处会填写一段文字介绍产品。智能健康水杯是一款革命性的饮水设备，集智能提醒、水温监测、饮水记录等多种功能于一身。采用食品级不锈钢材质，保证饮水安全；智能传感技术，精确记录您的每一次饮水。</p>
-                <p>我们的水杯能够根据您的个人身体状况和活动量，智能计算每日所需饮水量，并通过柔和的声音和灯光提醒您及时补充水分，帮助您养成良好的饮水习惯。</p>
-                <p>无论是办公室工作、户外运动还是家庭使用，智能健康水杯都是您理想的健康伴侣。</p>
+                <p>SM圈，全称为Sadism & Masochism（施虐与受虐），是一种基于双方自愿的权力交换关系。这种关系建立在信任、尊重和明确沟通的基础上，参与者通过角色扮演、束缚、支配与服从等活动获得身心上的满足感。</p>
+                <p>在我们的社群中，安全、理智和知情同意是最基本的原则。所有活动都必须在双方明确界限和安全词的前提下进行，确保每位参与者都能在舒适和尊重的环境中探索自己的喜好和界限。</p>
+                <p>烟雨小楼作为亚洲最大的字母交友圈，致力于为爱好者提供一个安全、专业的交流平台。我们定期举办工作坊、交流活动和主题聚会，帮助大家更好地了解自己，结识志同道合的朋友，并在安全的环境中探索与实践。</p>
             </div>
-            <div class="image-content">
-                <img src="https://images.unsplash.com/photo-1598033129183-c4f50c736f10?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="智能健康水杯">
-                <p>智能健康水杯展示</p>
-            </div>
+            <!-- 已移除图片部分 -->
         </div>
     </section>
     
@@ -596,4 +623,3 @@
     </script>
 </body>
 </html>
-
