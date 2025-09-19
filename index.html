@@ -22,7 +22,7 @@
             min-height: 100vh;
         }
         
-        /* 调整遮罩透明度 - 降低到0.35 */
+        /* 调整遮罩透明度 - 降低到0.2 */
         body::before {
             content: '';
             position: fixed;
@@ -30,7 +30,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(255, 255, 255, 0.35); /* 透明度降低到0.35 */
+            background: rgba(255, 255, 255, 0.2); /* 透明度降低到0.2 */
             z-index: -1;
         }
         
@@ -85,7 +85,7 @@
             margin-bottom: 10px;
             color: #2c3e50;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-            margin-top: -330px; /* 标题再向上移动220px，总共330px */
+            margin-top: -330px; /* 标题向上移动330px */
         }
         
         .hero-subtitle {
@@ -293,25 +293,27 @@
         @media (max-width: 600px) {
             .hero-title {
                 font-size: 2.5rem;
-                margin-top: -280px; /* 移动端标题位置调整 */
+                margin-top: -330px; /* 移动端标题位置与电脑端保持一致 */
             }
             
             .hero-subtitle {
                 font-size: 1.2rem;
-                margin-bottom: 30px;
+                margin-bottom: 40px;
             }
             
             /* 确保导航按钮在移动端保持2×3布局 */
             .nav-buttons {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 10px;
+                row-gap: 23px; /* 上下间距改为原来的2.3倍 */
+                column-gap: 10px; /* 左右间距保持不变 */
                 max-width: 100%;
             }
             
             .nav-btn {
-                padding: 10px;
-                font-size: 0.8rem;
-                min-height: 50px;
+                padding: 15px;
+                font-size: 1rem; /* 字体放大 */
+                font-weight: 800; /* 字体加粗 */
+                min-height: 90px; /* 高度改为原来的1.8倍 */
             }
             
             .section-title {
@@ -335,17 +337,22 @@
         /* 超小屏幕适配 */
         @media (max-width: 400px) {
             .nav-btn {
-                font-size: 0.7rem;
-                padding: 8px;
+                font-size: 0.9rem;
+                padding: 12px;
+                min-height: 85px;
             }
             
             .hero-title {
                 font-size: 2rem;
-                margin-top: -220px; /* 超小屏幕标题位置调整 */
+                margin-top: -300px;
             }
             
             .hero-subtitle {
                 font-size: 1rem;
+            }
+            
+            .nav-buttons {
+                row-gap: 20px;
             }
         }
     </style>
