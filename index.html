@@ -17,20 +17,40 @@
         body {
             line-height: 1.6;
             color: #333;
-            background: url('6b0a4311833021b17eef383b6887a7e2.png') no-repeat center center fixed;
-            background-size: cover;
             min-height: 100vh;
+            position: relative;
         }
         
-        /* 调整遮罩透明度 - 降低到0.12 */
-        body::before {
-            content: '';
+        /* 背景容器 - 修复iOS问题 */
+        .bg-container {
             position: fixed;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(255, 255, 255, 0.12); /* 透明度降低到0.12 */
+            width: 100%;
+            height: 100%;
+            z-index: -3;
+            overflow: hidden;
+        }
+        
+        .bg-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('6b0a4311833021b17eef383b6887a7e2.png') no-repeat center center;
+            background-size: cover;
+            transition: opacity 0.5s ease;
+        }
+        
+        /* 调整遮罩透明度 - 降低到0.12 */
+        .bg-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.12);
             z-index: -1;
         }
         
@@ -46,6 +66,8 @@
             position: sticky;
             top: 0;
             z-index: 100;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
         
         .logo-container {
@@ -78,6 +100,7 @@
             align-items: center;
             text-align: center;
             padding: 20px;
+            position: relative;
         }
         
         .hero-title {
@@ -85,7 +108,6 @@
             margin-bottom: 10px;
             color: #2c3e50;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-            margin-top: -160px; /* 标题再下降100px，从-260px改为-160px */
         }
         
         .hero-subtitle {
@@ -111,8 +133,8 @@
             padding: 12px;
             border-radius: 10px;
             text-decoration: none;
-            font-weight: 900; /* 加粗字体 */
-            font-size: 1.4rem; /* 放大字体到2.5倍 */
+            font-weight: 900;
+            font-size: 1.4rem;
             transition: all 0.3s;
             display: flex;
             flex-direction: column;
@@ -126,7 +148,7 @@
         
         .nav-btn i {
             margin-bottom: 8px;
-            font-size: 1.6rem; /* 图标也相应放大 */
+            font-size: 1.6rem;
         }
         
         .nav-btn:hover {
@@ -139,6 +161,7 @@
         /* 内容区块 */
         .section {
             padding: 60px 0;
+            position: relative;
         }
         
         .section-title {
@@ -160,13 +183,13 @@
         
         /* SM圈介绍板块特定样式 */
         #about .text-content {
-            background: rgba(255, 255, 255, 0.7); /* 半透明白色背景 */
+            background: rgba(255, 255, 255, 0.7);
             padding: 30px;
             border-radius: 15px;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
             margin-bottom: 30px;
             border: 1px solid rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(5px); /* 背景模糊效果 */
+            backdrop-filter: blur(5px);
         }
         
         #about .text-content p {
@@ -178,13 +201,13 @@
         
         /* 圈内文化板块特定样式 */
         #specs .text-content {
-            background: rgba(255, 255, 255, 0.7); /* 半透明白色背景 */
+            background: rgba(255, 255, 255, 0.7);
             padding: 30px;
             border-radius: 15px;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
             margin-bottom: 30px;
             border: 1px solid rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(5px); /* 背景模糊效果 */
+            backdrop-filter: blur(5px);
         }
         
         #specs .text-content p {
@@ -228,7 +251,7 @@
             color: #666;
         }
         
-        /* 特性展示 - 修改背景透明度为0.7 */
+        /* 特性展示 */
         .features {
             margin: 30px 0;
             display: grid;
@@ -237,19 +260,19 @@
         }
         
         .feature {
-            background: rgba(255, 255, 255, 0.7); /* 修改透明度为0.7 */
+            background: rgba(255, 255, 255, 0.7);
             padding: 25px;
-            border-radius: 15px; /* 增加圆角以匹配其他板块 */
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* 修改阴影以匹配其他板块 */
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
             text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.5); /* 添加边框以匹配其他板块 */
+            border: 1px solid rgba(255, 255, 255, 0.5);
             transition: transform 0.3s;
-            backdrop-filter: blur(5px); /* 添加背景模糊效果 */
+            backdrop-filter: blur(5px);
         }
         
         .feature:hover {
             transform: translateY(-5px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2); /* 增强悬停阴影效果 */
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
         }
         
         .feature i {
@@ -273,17 +296,17 @@
         .contact-info {
             text-align: center;
             padding: 25px;
-            background: rgba(255, 255, 255, 0.7); /* 修改透明度为0.7 */
+            background: rgba(255, 255, 255, 0.7);
             border-radius: 15px;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
             margin: 30px 0;
             border: 1px solid rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(5px); /* 添加背景模糊效果 */
+            backdrop-filter: blur(5px);
         }
         
         .contact-info h3 {
             margin-bottom: 20px;
-            color: #2c3e50;
+            color: 2c3e50;
         }
         
         .contact-details {
@@ -306,6 +329,7 @@
             padding: 30px 0;
             margin-top: 50px;
             border-top: 1px solid #eaeaea;
+            background: rgba(255, 255, 255, 0.9);
         }
         
         .company-signature {
@@ -314,11 +338,10 @@
             margin-top: 15px;
         }
         
-        /* 响应式设计 - 确保导航按钮在移动端保持2×3布局 */
+        /* 响应式设计 */
         @media (max-width: 600px) {
             .hero-title {
                 font-size: 2.5rem;
-                margin-top: -160px; /* 移动端标题位置与电脑端保持一致，再下降100px */
             }
             
             .hero-subtitle {
@@ -326,23 +349,22 @@
                 margin-bottom: 40px;
             }
             
-            /* 确保导航按钮在移动端保持2×3布局 */
             .nav-buttons {
                 grid-template-columns: repeat(2, 1fr);
-                row-gap: 23px; /* 上下间距改为原来的2.3倍 */
-                column-gap: 10px; /* 左右间距保持不变 */
+                row-gap: 23px;
+                column-gap: 10px;
                 max-width: 100%;
             }
             
             .nav-btn {
                 padding: 15px;
-                font-size: 1.8rem; /* 字体放大到2.5倍 */
-                font-weight: 900; /* 字体加粗 */
-                min-height: 120px; /* 高度增加以适应大字体 */
+                font-size: 1.8rem;
+                font-weight: 900;
+                min-height: 120px;
             }
             
             .nav-btn i {
-                font-size: 2rem; /* 移动端图标也相应放大 */
+                font-size: 2rem;
                 margin-bottom: 10px;
             }
             
@@ -359,19 +381,11 @@
                 height: 50px;
             }
             
-            /* SM圈介绍板块在移动端的样式调整 */
-            #about .text-content {
+            #about .text-content, #specs .text-content {
                 padding: 20px;
                 margin: 0 10px 30px 10px;
             }
             
-            /* 圈内文化板块在移动端的样式调整 */
-            #specs .text-content {
-                padding: 20px;
-                margin: 0 10px 30px 10px;
-            }
-            
-            /* 特性板块在移动端的样式调整 */
             .features {
                 grid-template-columns: 1fr;
                 gap: 15px;
@@ -382,7 +396,6 @@
             }
         }
 
-        /* 超小屏幕适配 */
         @media (max-width: 400px) {
             .nav-btn {
                 font-size: 1.6rem;
@@ -396,7 +409,6 @@
             
             .hero-title {
                 font-size: 2rem;
-                margin-top: -130px; /* 超小屏幕标题再下降100px，从-230px改为-130px */
             }
             
             .hero-subtitle {
@@ -407,17 +419,10 @@
                 row-gap: 20px;
             }
             
-            /* SM圈介绍板块在超小屏幕的样式调整 */
-            #about .text-content {
+            #about .text-content, #specs .text-content {
                 padding: 15px;
             }
             
-            /* 圈内文化板块在超小屏幕的样式调整 */
-            #specs .text-content {
-                padding: 15px;
-            }
-            
-            /* 特性板块在超小屏幕的样式调整 */
             .feature {
                 padding: 15px;
             }
@@ -430,9 +435,28 @@
                 font-size: 1.2rem;
             }
         }
+
+        /* iOS特定修复 */
+        @supports (-webkit-touch-callout: none) {
+            .bg-container {
+                height: 100vh;
+                height: -webkit-fill-available;
+            }
+            
+            .hero-section {
+                height: 100vh;
+                height: -webkit-fill-available;
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- 背景容器 - 修复iOS问题 -->
+    <div class="bg-container">
+        <div class="bg-image"></div>
+        <div class="bg-overlay"></div>
+    </div>
+
     <!-- 导航栏 -->
     <header>
         <div class="container">
@@ -587,28 +611,57 @@
     </footer>
 
     <script>
+        // 检测iOS设备并应用特定修复
+        function isIOS() {
+            return [
+                'iPad Simulator',
+                'iPhone Simulator',
+                'iPod Simulator',
+                'iPad',
+                'iPhone',
+                'iPod'
+            ].includes(navigator.platform) || 
+            (navigator.userAgent.includes("Mac") && "ontouchend" in document);
+        }
+
+        // 调整iOS设备上的背景图
+        function adjustBackgroundForIOS() {
+            if (isIOS()) {
+                const bgImage = document.querySelector('.bg-image');
+                // 添加一个小的延迟确保DOM完全加载
+                setTimeout(() => {
+                    // 确保背景图覆盖整个屏幕
+                    document.body.style.background = 'none';
+                    bgImage.style.backgroundAttachment = 'scroll';
+                    
+                    // 监听窗口大小变化
+                    window.addEventListener('resize', () => {
+                        bgImage.style.height = window.innerHeight + 'px';
+                    });
+                    
+                    // 初始设置
+                    bgImage.style.height = window.innerHeight + 'px';
+                }, 100);
+            }
+        }
+
         // 收藏网站功能
         function addToFavorites() {
             let title = document.title;
             let url = window.location.href;
             
             try {
-                // 尝试使用现代浏览器的收藏API
                 if (window.sidebar && window.sidebar.addPanel) {
-                    // Firefox
                     window.sidebar.addPanel(title, url, "");
                 } else if (window.external && ('AddFavorite' in window.external)) {
-                    // IE
                     window.external.AddFavorite(url, title);
                 } else if (window.opera && window.print) {
-                    // Opera
                     let elem = document.createElement('a');
                     elem.setAttribute('href', url);
                     elem.setAttribute('title', title);
                     elem.setAttribute('rel', 'sidebar');
                     elem.click();
                 } else {
-                    // 其他浏览器使用提示方式
                     alert("请使用 Ctrl+D (Windows/Linux) 或 Cmd+D (Mac) 手动收藏本页面");
                 }
             } catch (e) {
@@ -633,6 +686,11 @@
                     });
                 }
             });
+        });
+
+        // 页面加载完成后执行
+        document.addEventListener('DOMContentLoaded', function() {
+            adjustBackgroundForIOS();
         });
     </script>
 </body>
