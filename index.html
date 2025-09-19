@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SM 烟雨小楼</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* 基础样式重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 第一屏 - 英雄区域 */
+        .hero-section {
+            height: 100vh;
+            background: url('6b0a4311833021b17eef383b6887a7e2.png') no-repeat center center;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+        
+        /* 导航栏 */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 15px 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: background 0.3s;
+        }
+        
+        header.scrolled {
+            background: rgba(52, 152, 219, 0.95);
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            justify-content: center;
+        }
+        
+        .logo-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #3498db;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        header.scrolled .logo {
+            color: white;
+        }
+        
+        /* 内容区域 */
+        .content-section {
+            padding: 80px 0;
+        }
+        
+        /* 第二部分 - 自定义背景1 */
+        .section-bg-1 {
+            background: url('https://images.unsplash.com/photo-1518837695005-2083093ee35b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') no-repeat center center;
+            background-size: cover;
+            background-attachment: fixed;
+            color: white;
+            position: relative;
+        }
+        
+        .section-bg-1::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1;
+        }
+        
+        /* 第三部分 - 自定义背景2 */
+        .section-bg-2 {
+            background: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') no-repeat center center;
+            background-size: cover;
+            background-attachment: fixed;
+            color: white;
+            position: relative;
+        }
+        
+        .section-bg-2::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1;
+        }
+        
+        .section-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.2rem;
+        }
+        
+        .text-content {
+            margin-bottom: 25px;
+        }
+        
+        .text-content p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+        
+        .image-content {
+            text-align: center;
+            margin: 25px 0;
+        }
+        
+        .image-content img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* 特性展示 */
+        .features {
+            margin: 30px 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .feature {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .feature i {
+            font-size: 2.2rem;
+            color: #3498db;
+            margin-bottom: 15px;
+        }
+        
+        .feature h3 {
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        
+        /* 技术规格 */
+        .specs {
+            margin: 30px 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .spec {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .spec h3 {
+            color: #3498db;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        
+        .spec p {
+            margin-bottom: 8px;
+        }
+        
+        /* 联系信息 */
+        .contact-info {
+            text-align: center;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            margin: 30px 0;
+            color: #333;
+        }
+        
+        .contact-info h3 {
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+        
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        /* 按钮样式 */
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s;
+            margin: 10px 5px;
+        }
+        
+        .btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+        
+        /* 页脚 */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+        }
+        
+        .company-signature {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 600px) {
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-content p {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .btn {
+                display: block;
+                margin: 10px auto;
+                width: 80%;
+            }
+            
+            .logo {
+                font-size: 1.2rem;
+            }
+            
+            .logo-avatar {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .features, .specs {
+                grid-template-columns: 1fr;
+            }
+            
+            .content-section {
+                padding: 60px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header>
+        <div class="container">
+            <div class="logo-container">
+                <img src="avatar.jpg" alt="SM 烟雨小楼头像" class="logo-avatar">
+                <div class="logo">SM 烟雨小楼</div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- 第一屏 - 英雄区域 -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>SM 烟雨小楼</h1>
+            <p>您的随身饮水管家，智能提醒，科学饮水，健康生活从此开始</p>
+            <a href="#about" class="btn">探索更多</a>
+        </div>
+    </section>
+    
+    <!-- 产品介绍 -->
+    <section class="content-section" id="about">
+        <div class="container">
+            <h2 class="section-title">产品介绍</h2>
+            <div class="text-content">
+                <p>此处会填写一段文字介绍产品。智能健康水杯是一款革命性的饮水设备，集智能提醒、水温监测、饮水记录等多种功能于一身。采用食品级不锈钢材质，保证饮水安全；智能传感技术，精确记录您的每一次饮水。</p>
+                <p>我们的水杯能够根据您的个人身体状况和活动量，智能计算每日所需饮水量，并通过柔和的声音和灯光提醒您及时补充水分，帮助您养成良好的饮水习惯。</p>
+                <p>无论是办公室工作、户外运动还是家庭使用，智能健康水杯都是您理想的健康伴侣。</p>
+            </div>
+            <div class="image-content">
+                <img src="https://images.unsplash.com/photo-1598033129183-c4f50c736f10?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="智能健康水杯">
+            </div>
+        </div>
+    </section>
+    
+    <!-- 第二部分 - 自定义背景1 -->
+    <section class="content-section section-bg-1">
+        <div class="container">
+            <div class="section-content">
+                <h2 class="section-title">产品特点</h2>
+                <div class="text-content">
+                    <p>此处也会填写一段文字，详细介绍产品的特点和优势。</p>
+                </div>
+                <div class="features">
+                    <div class="feature">
+                        <i class="fas fa-bell"></i>
+                        <h3>智能提醒</h3>
+                        <p>根据您的活动量和身体状态，智能提醒您及时饮水，避免脱水</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-temperature-high"></i>
+                        <h3>水温监测</h3>
+                        <p>实时监测水温，避免烫伤，保证最佳饮水体验</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-chart-line"></i>
+                        <h3>饮水记录</h3>
+                        <p>自动记录每日饮水量，生成健康报告，帮助您了解饮水习惯</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-mobile-alt"></i>
+                        <h3>APP连接</h3>
+                        <p>通过手机APP查看详细数据，设置个性化饮水计划</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 技术规格 -->
+    <section class="content-section">
+        <div class="container">
+            <h2 class="section-title">技术规格</h2>
+            <div class="text-content">
+                <p>此处填写一段文字，中间会穿插7张图片，每张图片上都会写标注。</p>
+            </div>
+            <div class="specs">
+                <div class="spec">
+                    <h3>基本参数</h3>
+                    <p>容量: 500ml</p>
+                    <p>材质: 食品级304不锈钢</p>
+                    <p>重量: 380g</p>
+                    <p>尺寸: Φ75×220mm</p>
+                </div>
+                <div class="spec">
+                    <h3>电池性能</h3>
+                    <p>电池类型: 锂聚合物电池</p>
+                    <p>电池容量: 1000mAh</p>
+                    <p>待机时间: 30天</p>
+                    <p>充电时间: 2小时</p>
+                </div>
+                <div class="spec">
+                    <h3>智能功能</h3>
+                    <p>提醒方式: 声音+灯光</p>
+                    <p>连接方式: Bluetooth 5.0</p>
+                    <p>兼容系统: iOS 10.0+ / Android 7.0+</p>
+                    <p>防水等级: IP67</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 第三部分 - 自定义背景2 -->
+    <section class="content-section section-bg-2">
+        <div class="container">
+            <div class="section-content">
+                <h2 class="section-title">产品展示</h2>
+                <div class="text-content">
+                    <p>此处填写一段文字，中间会穿插7张图片，每张图片上都会写标注。</p>
+                </div>
+                <div class="image-content">
+                    <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="水杯使用场景">
+                    <p>办公室使用场景</p>
+                </div>
+                <div class="image-content">
+                    <img src="https://images.unsplash.com/photo-1577626717112-4bce49b6c7eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="水杯户外使用">
+                    <p>户外运动场景</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 联系我们 -->
+    <section class="content-section" id="contact">
+        <div class="container">
+            <h2 class="section-title">购买咨询</h2>
+            <div class="text-content">
+                <p>此处会填写一段文字，介绍购买流程和售后服务等信息。</p>
+            </div>
+            
+            <div class="contact-info">
+                <h3>填写公司联系方式</h3>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>400-888-8888</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>sales@smartcup.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>北京市海淀区科技园区88号</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <p>© 2023 SM 烟雨小楼. 版权所有.</p>
+            <div class="company-signature">公司署名</div>
+        </div>
+    </footer>
+
+    <script>
+        // 导航栏滚动效果
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
