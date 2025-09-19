@@ -17,7 +17,21 @@
         body {
             line-height: 1.6;
             color: #333;
-            background: #f8f9fa;
+            background: url('6b0a4311833021b17eef383b6887a7e2.png') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+        }
+        
+        /* 添加半透明遮罩，提高文字可读性 */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.85);
+            z-index: -1;
         }
         
         .container {
@@ -26,63 +40,12 @@
             padding: 0 20px;
         }
         
-        /* 第一屏 - 英雄区域 */
-        .hero-section {
-            height: 100vh;
-            background: url('6b0a4311833021b17eef383b6887a7e2.png') no-repeat center center;
-            background-size: cover;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: white;
-            position: relative;
-        }
-        
-        .hero-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 1;
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
-        
-        .hero-content h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-        
-        .hero-content p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            max-width: 600px;
-        }
-        
         /* 导航栏 */
         header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
             padding: 15px 0;
-            z-index: 1000;
-            background: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            transition: background 0.3s;
-        }
-        
-        header.scrolled {
-            background: rgba(52, 152, 219, 0.95);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
         
         .logo-container {
@@ -93,77 +56,97 @@
         }
         
         .logo-avatar {
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             object-fit: cover;
             border: 2px solid #3498db;
         }
         
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: bold;
             color: #2c3e50;
         }
         
-        header.scrolled .logo {
-            color: white;
+        /* 第一页 - 英雄区域 */
+        .hero-section {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
         }
         
-        /* 内容区域 */
-        .content-section {
-            padding: 80px 0;
+        .hero-title {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            color: #2c3e50;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            margin-top: -80px; /* 标题向上移动 */
         }
         
-        /* 第二部分 - 自定义背景1 */
-        .section-bg-1 {
-            background: url('https://images.unsplash.com/photo-1518837695005-2083093ee35b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') no-repeat center center;
-            background-size: cover;
-            background-attachment: fixed;
-            color: white;
-            position: relative;
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 50px;
+            color: #e83e8c;
+            font-weight: 500;
         }
         
-        .section-bg-1::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 1;
+        /* 导航按钮网格 */
+        .nav-buttons {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 500px;
+            margin: 0 auto;
         }
         
-        /* 第三部分 - 自定义背景2 */
-        .section-bg-2 {
-            background: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') no-repeat center center;
-            background-size: cover;
-            background-attachment: fixed;
-            color: white;
-            position: relative;
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.7);
+            color: #e83e8c;
+            padding: 15px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border: 2px solid transparent;
         }
         
-        .section-bg-2::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 1;
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.9);
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+            border-color: #e83e8c;
         }
         
-        .section-content {
-            position: relative;
-            z-index: 2;
+        /* 内容区块 */
+        .section {
+            padding: 60px 0;
         }
         
         .section-title {
             text-align: center;
-            margin-bottom: 40px;
-            font-size: 2.2rem;
+            margin-bottom: 30px;
+            color: #2c3e50;
+            font-size: 2rem;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: #3498db;
+            margin: 15px auto;
         }
         
         .text-content {
@@ -173,18 +156,30 @@
         .text-content p {
             margin-bottom: 15px;
             line-height: 1.8;
+            font-size: 1.1rem;
         }
         
         .image-content {
             text-align: center;
-            margin: 25px 0;
+            margin: 30px 0;
         }
         
         .image-content img {
             width: 100%;
             max-width: 500px;
             border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .image-content img:hover {
+            transform: scale(1.02);
+        }
+        
+        .image-content p {
+            margin-top: 10px;
+            font-style: italic;
+            color: #666;
         }
         
         /* 特性展示 */
@@ -201,12 +196,16 @@
             border-radius: 10px;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
             text-align: center;
-            margin-bottom: 20px;
-            color: #333;
+            border: 1px solid #eaeaea;
+            transition: transform 0.3s;
+        }
+        
+        .feature:hover {
+            transform: translateY(-5px);
         }
         
         .feature i {
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             color: #3498db;
             margin-bottom: 15px;
         }
@@ -229,8 +228,7 @@
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-            color: #333;
+            border: 1px solid #eaeaea;
         }
         
         .spec h3 {
@@ -252,7 +250,7 @@
             border-radius: 10px;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
             margin: 30px 0;
-            color: #333;
+            border: 1px solid #eaeaea;
         }
         
         .contact-info h3 {
@@ -273,30 +271,13 @@
             gap: 10px;
         }
         
-        /* 按钮样式 */
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background: #3498db;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: all 0.3s;
-            margin: 10px 5px;
-        }
-        
-        .btn:hover {
-            background: #2980b9;
-            transform: translateY(-2px);
-        }
-        
         /* 页脚 */
         footer {
-            background: #2c3e50;
-            color: white;
+            color: #2c3e50;
             text-align: center;
             padding: 30px 0;
+            margin-top: 50px;
+            border-top: 1px solid #eaeaea;
         }
         
         .company-signature {
@@ -307,39 +288,40 @@
         
         /* 响应式设计 */
         @media (max-width: 600px) {
-            .hero-content h1 {
-                font-size: 2.2rem;
+            .hero-title {
+                font-size: 2.5rem;
+                margin-top: -40px;
             }
             
-            .hero-content p {
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .nav-buttons {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .nav-btn {
+                padding: 12px;
                 font-size: 1rem;
             }
             
             .section-title {
-                font-size: 1.8rem;
-            }
-            
-            .btn {
-                display: block;
-                margin: 10px auto;
-                width: 80%;
+                font-size: 1.6rem;
             }
             
             .logo {
-                font-size: 1.2rem;
+                font-size: 1.5rem;
             }
             
             .logo-avatar {
-                width: 40px;
-                height: 40px;
+                width: 50px;
+                height: 50px;
             }
             
             .features, .specs {
                 grid-template-columns: 1fr;
-            }
-            
-            .content-section {
-                padding: 60px 0;
             }
         }
     </style>
@@ -355,17 +337,35 @@
         </div>
     </header>
     
-    <!-- 第一屏 - 英雄区域 -->
+    <!-- 第一页 - 英雄区域 -->
     <section class="hero-section">
-        <div class="hero-content">
-            <h1>SM 烟雨小楼</h1>
-            <p>您的随身饮水管家，智能提醒，科学饮水，健康生活从此开始</p>
-            <a href="#about" class="btn">探索更多</a>
+        <h1 class="hero-title">SM 烟雨小楼</h1>
+        <p class="hero-subtitle">亚洲最大的圈</p>
+        
+        <div class="nav-buttons">
+            <a href="javascript:void(0)" class="nav-btn" onclick="addToFavorites()">
+                <i class="fas fa-bookmark"></i> 收藏本站
+            </a>
+            <a href="#about" class="nav-btn">
+                <i class="fas fa-info-circle"></i> 产品介绍
+            </a>
+            <a href="#features" class="nav-btn">
+                <i class="fas fa-star"></i> 产品特点
+            </a>
+            <a href="#specs" class="nav-btn">
+                <i class="fas fa-cogs"></i> 技术规格
+            </a>
+            <a href="#gallery" class="nav-btn">
+                <i class="fas fa-images"></i> 产品展示
+            </a>
+            <a href="#contact" class="nav-btn">
+                <i class="fas fa-headset"></i> 购买咨询
+            </a>
         </div>
     </section>
     
     <!-- 产品介绍 -->
-    <section class="content-section" id="about">
+    <section class="section" id="about">
         <div class="container">
             <h2 class="section-title">产品介绍</h2>
             <div class="text-content">
@@ -375,46 +375,45 @@
             </div>
             <div class="image-content">
                 <img src="https://images.unsplash.com/photo-1598033129183-c4f50c736f10?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="智能健康水杯">
+                <p>智能健康水杯展示</p>
             </div>
         </div>
     </section>
     
-    <!-- 第二部分 - 自定义背景1 -->
-    <section class="content-section section-bg-1">
+    <!-- 产品特点 -->
+    <section class="section" id="features">
         <div class="container">
-            <div class="section-content">
-                <h2 class="section-title">产品特点</h2>
-                <div class="text-content">
-                    <p>此处也会填写一段文字，详细介绍产品的特点和优势。</p>
+            <h2 class="section-title">产品特点</h2>
+            <div class="text-content">
+                <p>此处也会填写一段文字，详细介绍产品的特点和优势。</p>
+            </div>
+            <div class="features">
+                <div class="feature">
+                    <i class="fas fa-bell"></i>
+                    <h3>智能提醒</h3>
+                    <p>根据您的活动量和身体状态，智能提醒您及时饮水，避免脱水</p>
                 </div>
-                <div class="features">
-                    <div class="feature">
-                        <i class="fas fa-bell"></i>
-                        <h3>智能提醒</h3>
-                        <p>根据您的活动量和身体状态，智能提醒您及时饮水，避免脱水</p>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-temperature-high"></i>
-                        <h3>水温监测</h3>
-                        <p>实时监测水温，避免烫伤，保证最佳饮水体验</p>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-chart-line"></i>
-                        <h3>饮水记录</h3>
-                        <p>自动记录每日饮水量，生成健康报告，帮助您了解饮水习惯</p>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-mobile-alt"></i>
-                        <h3>APP连接</h3>
-                        <p>通过手机APP查看详细数据，设置个性化饮水计划</p>
-                    </div>
+                <div class="feature">
+                    <i class="fas fa-temperature-high"></i>
+                    <h3>水温监测</h3>
+                    <p>实时监测水温，避免烫伤，保证最佳饮水体验</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>饮水记录</h3>
+                    <p>自动记录每日饮水量，生成健康报告，帮助您了解饮水习惯</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>APP连接</h3>
+                    <p>通过手机APP查看详细数据，设置个性化饮水计划</p>
                 </div>
             </div>
         </div>
     </section>
     
     <!-- 技术规格 -->
-    <section class="content-section">
+    <section class="section" id="specs">
         <div class="container">
             <h2 class="section-title">技术规格</h2>
             <div class="text-content">
@@ -446,28 +445,26 @@
         </div>
     </section>
     
-    <!-- 第三部分 - 自定义背景2 -->
-    <section class="content-section section-bg-2">
+    <!-- 产品展示 -->
+    <section class="section" id="gallery">
         <div class="container">
-            <div class="section-content">
-                <h2 class="section-title">产品展示</h2>
-                <div class="text-content">
-                    <p>此处填写一段文字，中间会穿插7张图片，每张图片上都会写标注。</p>
-                </div>
-                <div class="image-content">
-                    <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="水杯使用场景">
-                    <p>办公室使用场景</p>
-                </div>
-                <div class="image-content">
-                    <img src="https://images.unsplash.com/photo-1577626717112-4bce49b6c7eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="水杯户外使用">
-                    <p>户外运动场景</p>
-                </div>
+            <h2 class="section-title">产品展示</h2>
+            <div class="text-content">
+                <p>此处填写一段文字，中间会穿插7张图片，每张图片上都会写标注。</p>
+            </div>
+            <div class="image-content">
+                <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="水杯使用场景">
+                <p>办公室使用场景</p>
+            </div>
+            <div class="image-content">
+                <img src="https://images.unsplash.com/photo-1577626717112-4bce49b6c7eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="水杯户外使用">
+                <p>户外运动场景</p>
             </div>
         </div>
     </section>
     
     <!-- 联系我们 -->
-    <section class="content-section" id="contact">
+    <section class="section" id="contact">
         <div class="container">
             <h2 class="section-title">购买咨询</h2>
             <div class="text-content">
@@ -503,25 +500,45 @@
     </footer>
 
     <script>
-        // 导航栏滚动效果
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
+        // 收藏网站功能
+        function addToFavorites() {
+            let title = document.title;
+            let url = window.location.href;
+            
+            try {
+                // 尝试使用现代浏览器的收藏API
+                if (window.sidebar && window.sidebar.addPanel) {
+                    // Firefox
+                    window.sidebar.addPanel(title, url, "");
+                } else if (window.external && ('AddFavorite' in window.external)) {
+                    // IE
+                    window.external.AddFavorite(url, title);
+                } else if (window.opera && window.print) {
+                    // Opera
+                    let elem = document.createElement('a');
+                    elem.setAttribute('href', url);
+                    elem.setAttribute('title', title);
+                    elem.setAttribute('rel', 'sidebar');
+                    elem.click();
+                } else {
+                    // 其他浏览器使用提示方式
+                    alert("请使用 Ctrl+D (Windows/Linux) 或 Cmd+D (Mac) 手动收藏本页面");
+                }
+            } catch (e) {
+                alert("请使用 Ctrl+D (Windows/Linux) 或 Cmd+D (Mac) 手动收藏本页面");
             }
-        });
+        }
         
-        // 平滑滚动
+        // 平滑滚动到锚点
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
+                if(this.getAttribute('href') === 'javascript:void(0)') return;
+                
                 e.preventDefault();
                 
                 const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
                 const targetElement = document.querySelector(targetId);
+                
                 if (targetElement) {
                     window.scrollTo({
                         top: targetElement.offsetTop - 80,
