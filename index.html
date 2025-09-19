@@ -111,16 +111,22 @@
             padding: 12px;
             border-radius: 10px;
             text-decoration: none;
-            font-weight: bold;
-            font-size: 0.9rem;
+            font-weight: 900; /* 加粗字体 */
+            font-size: 1.4rem; /* 放大字体到2.5倍 */
             transition: all 0.3s;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             border: 2px solid transparent;
             text-align: center;
             min-height: 60px;
+        }
+        
+        .nav-btn i {
+            margin-bottom: 8px;
+            font-size: 1.6rem; /* 图标也相应放大 */
         }
         
         .nav-btn:hover {
@@ -311,9 +317,14 @@
             
             .nav-btn {
                 padding: 15px;
-                font-size: 1rem; /* 字体放大 */
-                font-weight: 800; /* 字体加粗 */
-                min-height: 90px; /* 高度改为原来的1.8倍 */
+                font-size: 1.8rem; /* 字体放大到2.5倍 */
+                font-weight: 900; /* 字体加粗 */
+                min-height: 120px; /* 高度增加以适应大字体 */
+            }
+            
+            .nav-btn i {
+                font-size: 2rem; /* 移动端图标也相应放大 */
+                margin-bottom: 10px;
             }
             
             .section-title {
@@ -337,9 +348,13 @@
         /* 超小屏幕适配 */
         @media (max-width: 400px) {
             .nav-btn {
-                font-size: 0.9rem;
+                font-size: 1.6rem;
                 padding: 12px;
-                min-height: 85px;
+                min-height: 110px;
+            }
+            
+            .nav-btn i {
+                font-size: 1.8rem;
             }
             
             .hero-title {
