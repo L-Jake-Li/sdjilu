@@ -112,17 +112,26 @@
         
         .hero-subtitle {
             font-size: 1.5rem;
-            margin-bottom: 50px;
+            margin-bottom: 15px;
             color: #e83e8c;
             font-weight: 500;
+        }
+        
+        .hero-tagline {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            color: #3498db;
+            font-weight: 600;
+            font-style: italic;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
         }
         
         /* 导航按钮网格 - 确保在移动端也保持2×3布局 */
         .nav-buttons {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            max-width: 500px;
+            gap: 20px; /* 增加间距以适应更大的按钮 */
+            max-width: 900px; /* 增加最大宽度以适应更大的按钮 */
             margin: 0 auto;
             width: 100%;
         }
@@ -130,31 +139,33 @@
         .nav-btn {
             background: rgba(255, 255, 255, 0.7);
             color: #e83e8c;
-            padding: 12px;
-            border-radius: 10px;
+            padding: 20px; /* 增加内边距 */
+            border-radius: 15px;
             text-decoration: none;
             font-weight: 900;
-            font-size: 1.4rem;
+            font-size: 1.6rem; /* 稍微增大字体 */
             transition: all 0.3s;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             border: 2px solid transparent;
             text-align: center;
-            min-height: 60px;
+            min-height: 104px; /* 高度调整为原来的1.73倍 (60px * 1.73 ≈ 104px) */
+            width: 270px; /* 宽度调整为原来的1.8倍 (150px * 1.8 = 270px) */
+            margin: 0 auto; /* 居中显示 */
         }
         
         .nav-btn i {
-            margin-bottom: 8px;
-            font-size: 1.6rem;
+            margin-bottom: 12px;
+            font-size: 2rem; /* 增大图标 */
         }
         
         .nav-btn:hover {
             background: rgba(255, 255, 255, 0.9);
             transform: translateY(-5px);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
             border-color: #e83e8c;
         }
         
@@ -352,26 +363,33 @@
             
             .hero-subtitle {
                 font-size: 1.2rem;
-                margin-bottom: 40px;
+                margin-bottom: 10px;
+            }
+            
+            .hero-tagline {
+                font-size: 1.1rem;
+                margin-bottom: 30px;
             }
             
             .nav-buttons {
                 grid-template-columns: repeat(2, 1fr);
-                row-gap: 23px;
-                column-gap: 10px;
+                row-gap: 20px;
+                column-gap: 15px;
                 max-width: 100%;
             }
             
             .nav-btn {
                 padding: 15px;
-                font-size: 1.8rem;
+                font-size: 1.4rem;
                 font-weight: 900;
-                min-height: 120px;
+                min-height: 90px;
+                width: 100%; /* 移动端使用百分比宽度 */
+                max-width: 200px; /* 限制最大宽度 */
             }
             
             .nav-btn i {
-                font-size: 2rem;
-                margin-bottom: 10px;
+                font-size: 1.6rem;
+                margin-bottom: 8px;
             }
             
             .section-title {
@@ -416,13 +434,14 @@
 
         @media (max-width: 400px) {
             .nav-btn {
-                font-size: 1.6rem;
+                font-size: 1.2rem;
                 padding: 12px;
-                min-height: 110px;
+                min-height: 80px;
+                max-width: 160px;
             }
             
             .nav-btn i {
-                font-size: 1.8rem;
+                font-size: 1.4rem;
             }
             
             .hero-title {
@@ -433,8 +452,12 @@
                 font-size: 1rem;
             }
             
+            .hero-tagline {
+                font-size: 0.9rem;
+            }
+            
             .nav-buttons {
-                row-gap: 20px;
+                row-gap: 15px;
             }
             
             #about .text-content, #specs .text-content {
@@ -495,6 +518,7 @@
     <section class="hero-section">
         <h1 class="hero-title">SM 烟雨小楼</h1>
         <p class="hero-subtitle">亚洲最大的字母交友圈</p>
+        <p class="hero-tagline">享受极致的快感和乐趣</p>
         
         <div class="nav-buttons">
             <a href="javascript:void(0)" class="nav-btn" onclick="addToFavorites()">
@@ -604,7 +628,7 @@
             </div>
             
             <div class="channel-buttons">
-                <a href="https://qun.qq.com/universal-share/share?ac=1&authKey=r0oYNCwClbLiNM5a3LGQagLDjao08Yteawb7un5BxmWZIkx4i7Ky5T%2BaOT0j%2FRbM&busi_data=eyJncm91cENvZGUiOiIyNzI1MzMwOTAiLCJ0b2tlbiI6IkhMN2IzY2JINjZlT1BSbG5YN09pRGJwQkZrMWdlZ2JxQm5WSmtyclIwZGxzdzNZM2ZwZm5Wdmh6MlpHa25IbSsiLCJ1aW4iOiIxNTc0Mzc3NTQ2In0%3D&data=Qe2GZjpohFN375QB-QvD5RKQF13aPZb2SfuonJbIhb0CTHWzAZU9uzuMnM9WyRft-Cd26B4l9s0Us_z7mBvtdQ&svctype=4&tempid=h5_group_info" class="channel-btn">QQ入圈通道</a>
+                <a href="https://qun.qq.com/universal-share/share?ac=1&authKey=r0oYNCwClbLiNM5a3LGQagLDjao08Yteawb7un5BxmWZIkx4i7Ky5T%2BaOT0j%2FRbM&busi_data=eyJncm91cENvZGUiOiIyNzI1MzMwOTAiLCJ0b2tuZW4iOiJITDdiM2NiSDY2ZU9QUmxuWDdPaURicEJGazFnZWdicUJuVkprcnJSMGRsc3czWTNmcGZuVnZoejJaR2tuSG0rIiwidWluIjoiMTU3NDM3NzU0NiJ9&data=Qe2GZjpohFN375QB-QvD5RKQF13aPZb2SfuonJbIhb0CTHWzAZU9uzuMnM9WyRft-Cd26B4l9s0Us_z7mBvtdQ&svctype=4&tempid=h5_group_info" class="channel-btn">QQ入圈通道</a>
                 <a href="https://qr.dingtalk.com/action/joingroup?code=v1,k1,fE2IMp6dybKKvwixuOzByuZVnSnd+u4uMGQfVGGrujQ=&_dt_no_comment=1&origin=11" class="channel-btn">钉钉入圈通道</a>
                 <a href="https://t.me/+DaYdnU6sRv41NWY5" class="channel-btn">Telegram入圈通道</a>
                 <a href="https://haoka.kakatx.com/web/#/?agent_id=102462&callType=2" class="channel-btn">三周年免费流量卡</a>
@@ -705,8 +729,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
